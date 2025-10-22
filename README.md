@@ -19,9 +19,17 @@
 
 ## What is Agno?
 
-Agno is an incredibly fast multi-agent framework, runtime and UI.
+Agno is a framework and runtime for agentic software. Fast, elegant and performant at scale.
 
-Use it to build multi-agent systems with memory, knowledge, human in the loop and MCP support. You can orchestrate agents as multi-agent teams (more autonomy) or step-based agentic workflows (more control).
+It provides a rich set of primitives for building:
+
+- **Agents** with persistent state (stored in your database), knowledge retrieval (Agentic RAG), memory (for user preferences), and advanced features like human-in-the-loop, guardrails, dynamic context management and best-in-class MCP support.
+- **Multi-Agent Teams** that operate autonomously under a team leader who maintains shared state and agentic context, improving reasoning, quality, and over all performance.
+- **Step-based Workflows** for controlled, deterministic execution. Steps can be Agents, Teams, or a regular python functions and can run sequentially, in parallel, in loops, branches, or conditionally.
+
+But more importantly, Agno provides a FastAPI-powered runtime for serving your agents, teams and workflows in production, covering the entire sofware life cycle (build → run → deploy). Building Agents is easy, running them is hard, and that's where Agno shines.
+
+## Example
 
 Here’s an example of an Agent that connects to an MCP server, manages conversation state in a database, and is served using a FastAPI application that you can interact with using the [AgentOS UI](https://os.agno.com).
 
@@ -66,7 +74,7 @@ AgentOS is a high-performance runtime for multi-agent systems. Key features incl
 
 3. **Private by design**: AgentOS runs entirely in your cloud, ensuring complete data privacy. No data ever leaves your system. This is ideal for security-conscious enterprises.
 
-Here's how the [AgentOS UI](https://os.agno.com) looks like:
+Here's what the [AgentOS UI](https://os.agno.com) looks like:
 
 https://github.com/user-attachments/assets/feb23db8-15cc-4e88-be7c-01a21a03ebf6
 
