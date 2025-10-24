@@ -109,6 +109,7 @@ class ChunkerSchema(BaseModel):
     key: str
     name: Optional[str] = None
     description: Optional[str] = None
+    metadata: Optional[Dict[str, Any]] = None
 
 
 class VectorDbSchema(BaseModel):
