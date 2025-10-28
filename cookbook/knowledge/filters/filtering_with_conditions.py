@@ -1,5 +1,5 @@
 from agno.agent import Agent
-from agno.knowledge.filters import AND, EQ, GT, IN, LT, NOT, OR
+from agno.knowledge.filters import AND, EQ, IN, NOT
 from agno.knowledge.knowledge import Knowledge
 from agno.utils.media import (
     SampleDataFileExtension,
@@ -72,21 +72,36 @@ knowledge.add_contents(
 
 # Step 2: Query the knowledge base with different filter combinations
 # ------------------------------------------------------------------------------
-na_sales = Agent(
+sales_agent = Agent(
     knowledge=knowledge,
     search_knowledge=True,
 )
 
-na_sales.print_response(
+print("--------------------------------")
+print("Using IN operator")
+sales_agent.print_response(
     "Describe revenue performance for the region",
     # knowledge_filters=[{"region": "north_america", "data_type": "sales"}],
-    knowledge_filters=[(IN("region", ["north_america"]))],
+    knowledge_filters=[(IN("region", ["north_america", "europe"]))],
     markdown=True,
 )
 
-na_sales.print_response(
+print("--------------------------------")
+print("Using NOT operator")
+sales_agent.print_response(
     "Describe revenue performance for the region",
     # knowledge_filters=[{"region": "north_america", "data_type": "sales"}],
     knowledge_filters=[NOT(IN("region", ["north_america"]))],
+    markdown=True,
+)
+
+print("--------------------------------")
+print("Using AND operator")
+sales_agent.print_response(
+    "Describe revenue performance for the region",
+    # knowledge_filters=[{"region": "north_america", "data_type": "sales"}],
+    knowledge_filters=[
+        AND(EQ("data_type", "sales"), NOT(EQ("region", "north_america")))
+    ],
     markdown=True,
 )

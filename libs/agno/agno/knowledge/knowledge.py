@@ -1477,8 +1477,7 @@ class Knowledge:
                 else:
                     invalid_keys.append(key)
                     log_debug(f"Invalid filter key: {key} - not present in knowledge base")
-        elif isinstance(filters, list):
-            print("FILTERS ARE A LIST")
+
         return valid_filters, invalid_keys
 
     def add_filters(self, metadata: Dict[str, Any]) -> None:
