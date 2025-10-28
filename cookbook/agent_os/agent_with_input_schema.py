@@ -34,4 +34,4 @@ app = agent_os.get_app()
 
 
 if __name__ == "__main__":
-    agent_os.serve(app="input_schema_on_agent:app", port=7777)
+    agent_os.serve(app="agent_with_input_schema:app", port=7777)

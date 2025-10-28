@@ -22,7 +22,7 @@ class ResearchProject(BaseModel):
 
     project_name: str = Field(description="Name of the research project")
     research_topics: List[str] = Field(
-        description="List of topics to research", min_items=1
+        description="List of topics to research", min_length=1
     )
     target_audience: str = Field(description="Intended audience for the research")
     depth_level: str = Field(
