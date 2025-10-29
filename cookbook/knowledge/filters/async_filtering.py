@@ -1,7 +1,6 @@
 import asyncio
 
 from agno.agent import Agent
-from agno.knowledge.filters import IN
 from agno.knowledge.knowledge import Knowledge
 from agno.utils.media import (
     SampleDataFileExtension,
@@ -95,8 +94,7 @@ if __name__ == "__main__":
     asyncio.run(
         agent.aprint_response(
             "Tell me about the candidate's experience and skills",
-            # knowledge_filters={"user_id": "jordan_mitchell"},
-            knowledge_filters=[(IN("user_id", ["jordan_mitchell"]))],
+            knowledge_filters={"user_id": "jordan_mitchell"},
             markdown=True,
         )
     )
