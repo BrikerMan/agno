@@ -12,7 +12,7 @@ try:
     from sqlalchemy.inspection import inspect
     from sqlalchemy.orm import Session, scoped_session, sessionmaker
     from sqlalchemy.schema import Column, Index, MetaData, Table
-    from sqlalchemy.sql.elements import BinaryExpression
+    from sqlalchemy.sql.elements import BinaryExpression, ColumnElement
     from sqlalchemy.sql.expression import bindparam, desc, func, select, text
     from sqlalchemy.types import DateTime, Integer, String
 
@@ -709,7 +709,7 @@ class PgVector(VectorDb):
         """Search asynchronously by running in a thread."""
         return await asyncio.to_thread(self.search, query, limit, filters)
 
-    def _dsl_to_sqlalchemy(self, filter_expr, table) -> BinaryExpression:
+    def _dsl_to_sqlalchemy(self, filter_expr, table) -> ColumnElement[bool]:
         op = filter_expr["op"]
 
         if op == "EQ":

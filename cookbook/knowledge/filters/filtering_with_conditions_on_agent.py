@@ -1,3 +1,10 @@
+"""
+This example demonstrates how to use knowledge filter expressions with agents.
+
+Knowledge filters allow you to restrict knowledge searches to specific documents
+or metadata criteria, enabling personalized and contextual responses.
+"""
+
 from agno.agent import Agent
 from agno.knowledge.filters import AND, EQ, IN, NOT
 from agno.knowledge.knowledge import Knowledge
@@ -12,8 +19,7 @@ downloaded_csv_paths = download_knowledge_filters_sample_data(
     num_files=4, file_extension=SampleDataFileExtension.CSV
 )
 
-# Initialize LanceDB
-# By default, it stores data in /tmp/lancedb
+# Initialize PGVector
 vector_db = PgVector(
     table_name="recipes",
     db_url="postgresql+psycopg://ai:ai@localhost:5532/ai",
