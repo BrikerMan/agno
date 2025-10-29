@@ -29,11 +29,18 @@ def get_function_call(
     if arguments is not None and arguments != "":
         try:
             try:
-                _arguments = json.loads(arguments)
+                try:
+                    _arguments = json.loads(arguments)
+                except Exception:
+                    import ast
+                    _arguments = ast.literal_eval(arguments)
             except Exception:
-                import ast
+                from json_repair import repair_json
 
-                _arguments = ast.literal_eval(arguments)
+                fixed_json = repair_json(arguments)
+                _arguments = json.loads(fixed_json)
+
+                log_debug(f"✅ [{function_call.function.name}] Fixed param with repair_json")
         except Exception as e:
             log_error(f"Unable to decode function arguments:\n{arguments}\nError: {e}")
             function_call.error = (
