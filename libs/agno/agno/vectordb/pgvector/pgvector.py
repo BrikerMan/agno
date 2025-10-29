@@ -12,7 +12,7 @@ try:
     from sqlalchemy.inspection import inspect
     from sqlalchemy.orm import Session, scoped_session, sessionmaker
     from sqlalchemy.schema import Column, Index, MetaData, Table
-    from sqlalchemy.sql.elements import BinaryExpression, ColumnElement
+    from sqlalchemy.sql.elements import ColumnElement
     from sqlalchemy.sql.expression import bindparam, desc, func, select, text
     from sqlalchemy.types import DateTime, Integer, String
 
